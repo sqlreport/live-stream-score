@@ -20,10 +20,6 @@ function stopStopwatch(intervalId) {
   clearInterval(intervalId);
 }
 
-function startWithInterval(){
-	let intervalId = startStopwatch();
-}
-
       function resetStopwatch() {
   clearInterval(stopwatchInterval);
   document.getElementById("stopwatch").innerHTML = "0:00:000";
@@ -35,7 +31,7 @@ function startWithInterval(){
     <h1>Stopwatch</h1>
     <div id="stopwatch">0:00:00</div>
     <br>
-    <button onclick="startWithInterval()">Start</button>
+    <button onclick="let intervalId = startStopwatch()">Start</button>
     <button onclick="stopStopwatch()">Stop</button>
     <button onclick="resetStopwatch()">Reset</button>
   </body>

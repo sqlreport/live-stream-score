@@ -3,17 +3,38 @@
   <head>
     <title>Stopwatch</title>
     <script>
-    	var startTime;
-var elapsedTime = 0;
+    	let stopwatchInterval;
+    	let remainingTimeWhenStopped;
 
 function startStopwatch() {
-  startTime = Date.now();
+  if (stopwatchInterval) {
+    clearInterval(stopwatchInterval);
+  }
+  let endTime = Date.now() + (remainingTimeWhenStopped || 0);
+  let userInput = document.getElementById("start-time-input").value;
+  if (userInput) {
+    let inputArray = userInput.split(":");
+    let minutes = parseInt(inputArray[0]) || 0;
+    let seconds = parseInt(inputArray[1]) || 0;
+    endTime = endTime + (minutes * 60000 + seconds * 1000);
+  }
   stopwatchInterval = setInterval(function() {
-    elapsedTime = Date.now() - startTime;
-    let minutes = Math.floor(elapsedTime / 60000);
-    let seconds = Math.floor((elapsedTime % 60000) / 1000);
-    document.getElementById("timer-display").innerHTML =
-      minutes + ":" + seconds.toString().padStart(2, "0");
+    let remainingTime = endTime - Date.now();
+    if (remainingTime <= 0) {
+      clearInterval(stopwatchInterval);
+      document.getElementById("stopwatch").innerHTML = "Time's up!";
+      return;
+    }
+    let minutes = Math.floor(remainingTime / 60000);
+    let seconds = Math.floor((remainingTime % 60000) / 1000);
+    let milliseconds = Math.floor(remainingTime % 1000 / 100);
+    if (minutes === 0) {
+      document.getElementById("stopwatch").innerHTML =
+        seconds + "." + milliseconds;
+    } else {
+      document.getElementById("stopwatch").innerHTML =
+        minutes + ":" + seconds.toString().padStart(2, "0");
+    }
   }, 10);
 }
 

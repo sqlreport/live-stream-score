@@ -28,10 +28,10 @@ function startStopwatch() {
     }
     let minutes = Math.floor(remainingTime / 60000);
     let seconds = Math.floor((remainingTime % 60000) / 1000);
-    let milliseconds = remainingTime % 1000;
+    let milliseconds = Math.floor(remainingTime % 1000 / 100);
     if (minutes === 0) {
       document.getElementById("stopwatch").innerHTML =
-        seconds + "." + milliseconds.toString().padStart(3, "0");
+        seconds + "." + milliseconds;
     } else {
       document.getElementById("stopwatch").innerHTML =
         minutes + ":" + seconds.toString().padStart(2, "0");
@@ -51,6 +51,7 @@ function resetStopwatch() {
   document.getElementById("stopwatch").innerHTML = "0:00";
   remainingTimeWhenStopped = 0;
 }
+
 
 
     </script>

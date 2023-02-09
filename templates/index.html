@@ -41,6 +41,7 @@ function startStopwatch() {
 function stopStopwatch() {
   if (stopwatchInterval) {
     clearInterval(stopwatchInterval);
+    let endTime = startTime + elapsedTime;
     remainingTimeWhenStopped = endTime - Date.now();
     let minutes = Math.floor(remainingTimeWhenStopped / 60000);
     let seconds = Math.floor((remainingTimeWhenStopped % 60000) / 1000);
@@ -48,6 +49,7 @@ function stopStopwatch() {
       minutes + ":" + seconds.toString().padStart(2, "0");
   }
 }
+
 
 
 function resetStopwatch() {

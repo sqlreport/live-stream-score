@@ -4,15 +4,15 @@
     <title>Stopwatch</title>
     <script>
     	let remainingTimeWhenStopped;
-let startTimeInput;
 
 function startStopwatch() {
   if (stopwatchInterval) {
     clearInterval(stopwatchInterval);
   }
   let endTime = Date.now() + (remainingTimeWhenStopped || 0);
-  if (startTimeInput) {
-    let inputArray = startTimeInput.split(":");
+  let userInput = document.getElementById("start-time-input").value;
+  if (userInput) {
+    let inputArray = userInput.split(":");
     let minutes = parseInt(inputArray[0]) || 0;
     let seconds = parseInt(inputArray[1]) || 0;
     endTime = endTime + (minutes * 60000 + seconds * 1000);
@@ -48,8 +48,8 @@ function resetStopwatch() {
   clearInterval(stopwatchInterval);
   document.getElementById("stopwatch").innerHTML = "0:00";
   remainingTimeWhenStopped = 0;
-  startTimeInput = document.getElementById("start-time-input").value;
 }
+
 
 
 

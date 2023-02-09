@@ -5,11 +5,13 @@
     <script>
     	let stopwatchInterval;
 
+let remainingTimeWhenStopped;
+
 function startStopwatch() {
   if (stopwatchInterval) {
     clearInterval(stopwatchInterval);
   }
-  let endTime = Date.now();
+  let endTime = Date.now() + (remainingTimeWhenStopped || 0);
   let userInput = document.getElementById("start-time-input").value;
   if (userInput) {
     let inputArray = userInput.split(":");
@@ -31,16 +33,19 @@ function startStopwatch() {
   }, 10);
 }
 
-
-
 function stopStopwatch() {
-  clearInterval(stopwatchInterval);
+  if (stopwatchInterval) {
+    clearInterval(stopwatchInterval);
+    remainingTimeWhenStopped = endTime - Date.now();
+  }
 }
 
-      function resetStopwatch() {
+function resetStopwatch() {
   clearInterval(stopwatchInterval);
-  document.getElementById("stopwatch").innerHTML = "0:00:000";
+  document.getElementById("stopwatch").innerHTML = "0:00";
+  remainingTimeWhenStopped = 0;
 }
+
 
     </script>
   </head>

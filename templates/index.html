@@ -3,6 +3,7 @@
   <head>
     <title>Stopwatch</title>
     <script>
+    	let stopwatchInterval;
       function startStopwatch() {
   let startTime = Date.now();
   let stopwatchInterval = setInterval(function() {
@@ -16,7 +17,7 @@
 }
 
 
-      let stopwatchInterval;
+      
 
 function stopStopwatch() {
   clearInterval(stopwatchInterval);

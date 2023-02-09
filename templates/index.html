@@ -10,6 +10,10 @@ function startStopwatch() {
     clearInterval(stopwatchInterval);
   }
   let startTime = Date.now();
+  let userInput = document.getElementById("start-time-input").value;
+  if (userInput) {
+    startTime = startTime - (userInput * 1000);
+  }
   stopwatchInterval = setInterval(function() {
     let elapsedTime = Date.now() - startTime;
     let minutes = Math.floor(elapsedTime / 60000);
@@ -38,5 +42,8 @@ function stopStopwatch() {
     <button onclick="let intervalId = startStopwatch()">Start</button>
     <button onclick="stopStopwatch()">Stop</button>
     <button onclick="resetStopwatch()">Reset</button>
+
+    <br><br>
+  Start Time (in seconds): <input type="text" id="start-time-input">
   </body>
 </html>

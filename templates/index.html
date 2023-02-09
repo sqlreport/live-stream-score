@@ -3,9 +3,14 @@
   <head>
     <title>Stopwatch</title>
     <script>
-    	function startStopwatch() {
+    	let stopwatchInterval;
+
+function startStopwatch() {
+  if (stopwatchInterval) {
+    clearInterval(stopwatchInterval);
+  }
   let startTime = Date.now();
-  let stopwatchInterval = setInterval(function() {
+  stopwatchInterval = setInterval(function() {
     let elapsedTime = Date.now() - startTime;
     let minutes = Math.floor(elapsedTime / 60000);
     let seconds = Math.floor((elapsedTime % 60000) / 1000);
@@ -13,11 +18,10 @@
     document.getElementById("stopwatch").innerHTML =
       minutes + ":" + seconds + ":" + milliseconds;
   }, 10);
-  return stopwatchInterval;
 }
 
-function stopStopwatch(intervalId) {
-  clearInterval(intervalId);
+function stopStopwatch() {
+  clearInterval(stopwatchInterval);
 }
 
       function resetStopwatch() {

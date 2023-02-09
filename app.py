@@ -3,32 +3,16 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
+import task
+
 app = Flask(__name__)
 
-
-class Timer:
-    def __init__(self, current_time):
-        self.current_time = current_time
-
-    def decrement(self):
-        if self.current_time > 0:
-            self.current_time = self.current_time - 1
-        return self.current_time
-
-
-t = Timer(current_time=60)
-
-
-@app.route("/", methods=["GET"])
-def index():
-    return render_template("index.html")
-
-
-@app.route("/_timer", methods=["GET", "POST"])
-def timer():
-    new_time = t.decrement()
-    return jsonify({"result": new_time})
-
+@app.route("/")
+def hello():
+    name = request.args.get('name', 'John doe')
+    result = task.hello.delay(name)
+    result.wait()
+    return render_template('index.html', celery=result)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

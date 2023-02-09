@@ -23,7 +23,7 @@ function startStopwatch() {
     let seconds = Math.floor((elapsedTime % 60000) / 1000);
     let milliseconds = elapsedTime % 1000;
     document.getElementById("stopwatch").innerHTML =
-      minutes + ":" + seconds + ":" + milliseconds;
+  minutes + ":" + seconds.toString().padStart(2, "0");
   }, 10);
 }
 

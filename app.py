@@ -17,7 +17,7 @@ def score():
 def match():
     return render_template('match.html')
 
-@app.route('/match/<string:game_id>/time', mehods=['GET','POST'])
+@app.route('/match/<string:game_id>/time', methods=['GET','POST'])
 def remaining_time(game_id):
     if request.method == 'POST':
         remaining_time = request.form.get('remaining_time')

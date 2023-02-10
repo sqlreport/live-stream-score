@@ -69,10 +69,20 @@
         </div>
       </div>
     </div>
-    
+    <script>
+      async function getRemainingTime() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const gameID = urlParams.get('gameID');
+        //const gameID = localStorage.getItem("gameID");
+        const response = await fetch(`/game/${gameID}/time`);
+        const data = await response.json();
+        console.log(data.remaining_time);
+        return data.remaining_time;
+}
+    </script>
     <script>
   function displayRemainingTime() {
-    let remainingTime = localStorage.getItem("remainingTimeWhenStopped");
+    let remainingTime = getRemainingTime();//localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");
     let period = localStorage.getItem("period");

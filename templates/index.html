@@ -7,6 +7,16 @@
   font-size: 20px;
   padding: 10px 20px;
 }
+      
+      input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow:
+      }
     </style>
     <script>
       let stopwatchInterval;
@@ -88,7 +98,18 @@
     <br><br>
     Start Time (in seconds): <input type="text" id="start-time-input">
     <br><br>
-    Period: <input type="text" id="period">
+    Period: <input type="radio" id="period-1" name="period" value="P1">
+<label for="period-1">P1</label>
+
+<input type="radio" id="period-2" name="period" value="P2">
+<label for="period-2">P2</label>
+
+<input type="radio" id="period-3" name="period" value="P3">
+<label for="period-3">P3</label>
+
+<input type="radio" id="period-OT" name="period" value="OT">
+<label for="period-OT">OT</label>
+
   </body>
 </html>
 

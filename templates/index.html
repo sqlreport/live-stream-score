@@ -60,6 +60,16 @@
 
       function resetStopwatch() {
         clearInterval(stopwatchInterval);
+        let userInput = document.getElementById("start-time-input").value;
+        if (userInput) {
+          let inputArray = userInput.split(":");
+          let minutes = parseInt(inputArray[0]) || 0;
+          let seconds = parseInt(inputArray[1]) || 0;
+          endTime = endTime + (minutes * 60000 + seconds * 1000);
+        } else {
+          endTime = endTime + (remainingTimeWhenStopped || 0);
+
+        }
         document.getElementById("stopwatch").innerHTML = "20:00";
         remainingTimeWhenStopped = 1200000;
       }

@@ -62,7 +62,7 @@
       function resetStopwatch() {
         clearInterval(stopwatchInterval);
         let userInput = document.getElementById("start-time-input").value;
-        let period = document.getElementById("period").value;
+        let period = document.querySelector('input[name="period"]:checked').value;
         if (userInput) {
           let inputArray = userInput.split(":");
           let minutes = parseInt(inputArray[0]) || 0;

@@ -11,6 +11,10 @@ def index():
 def score():
     return render_template('score.html')
 
+@app.route('/match')
+def score():
+    return render_template('match.html')
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

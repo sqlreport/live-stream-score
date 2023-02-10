@@ -47,9 +47,10 @@ function resetStopwatch() {
   startTimeInput = document.getElementById("start-time-input").value;
   
   if (startTimeInput) {
-    alert("reset")
+    
     let inputArray = startTimeInput.split(":");
     let minutes = parseInt(inputArray[0]) || 0;
+    alert(minutes)
     let seconds = parseInt(inputArray[1]) || 0;
     endTime = endTime + (minutes * 60000 + seconds * 1000);
   }

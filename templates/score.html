@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Score</title>
-</head>
-<body>
-  <h1>Score</h1>
-  <div id="score">{{ time }}</div>
-</body>
+  <head>
+    <title>Score</title>
+    <script>
+  function displayRemainingTime() {
+    let remainingTime = localStorage.getItem("remainingTimeWhenStopped");
+    if (remainingTime) {
+      let minutes = Math.floor(remainingTime / 60000);
+      let seconds = Math.floor((remainingTime % 60000) / 1000);
+      let milliseconds = Math.floor(remainingTime % 1000 / 100);
+      if (minutes === 0) {
+        document.getElementById("stopwatch").innerHTML =
+          seconds + "." + milliseconds;
+      } else {
+        document.getElementById("stopwatch").innerHTML =
+          minutes + ":" + seconds.toString().padStart(2, "0");
+      }
+    } else {
+      document.getElementById("stopwatch").innerHTML = "No remaining time found."
+    }
+  }
+
+  window.onload = function() {
+    setInterval(displayRemainingTime, 10);
+  }
+</script>
+
+  </head>
+  <body onload="displayRemainingTime()">
+    <h1>Score</h1>
+    <div id="remaining-time"></div>
+  </body>
 </html>
+

@@ -54,6 +54,7 @@
       function resetStopwatch() {
         clearInterval(stopwatchInterval);
         let userInput = document.getElementById("start-time-input").value;
+        let period = document.getElementById("period").value;
         if (userInput) {
           let inputArray = userInput.split(":");
           let minutes = parseInt(inputArray[0]) || 0;
@@ -66,6 +67,7 @@
         document.getElementById("stopwatch").innerHTML = "20:00";
         remainingTimeWhenStopped = 1200000;
         localStorage.setItem("remainingTimeWhenStopped", remainingTimeWhenStopped);
+        localStorage.setItem("period", rperiod);
       }
     </script>
   </head>
@@ -79,6 +81,8 @@
 
     <br><br>
     Start Time (in seconds): <input type="text" id="start-time-input">
+    <br><br>
+    Period: <input type="text" id="period">
   </body>
 </html>
 

@@ -16,9 +16,11 @@
     let remainingTime = localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");
+    let period = localStorage.getItem("period");
     
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;
+    document.getElementById("period").innerHTML = period;
     
     if (remainingTime) {
       let minutes = Math.floor(remainingTime / 60000);

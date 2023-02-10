@@ -21,7 +21,16 @@ def match():
 @app.route('/match/<string:game_id>/time', methods=['GET','POST'])
 def remaining_time(game_id):
     if request.method == 'POST':
-        remaining_time = request.form.get('remaining_time')
+        
+        if request.is_json:
+            data = request.get_json()
+            remaining_time = data.get('remainingTimeWhenStopped')
+            # you can use the game_id and remaining_time values as needed
+            # store the data in a database, update an existing record, etc.
+            return "Remaining time added successfully"
+        else:
+            return "Request is not in JSON format"
+    
         redis_db.set(str(game_id), str(remaining_time))
         return 'Remaining time for game ID {} set to {}'.format(game_id, remaining_time)
     else:

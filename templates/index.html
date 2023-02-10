@@ -4,7 +4,8 @@
     <title>Stopwatch</title>
     <script>
     	let stopwatchInterval;
-    	let remainingTimeWhenStopped;
+    	
+let remainingTimeWhenStopped;
 
 function startStopwatch() {
   if (stopwatchInterval) {
@@ -45,12 +46,10 @@ function stopStopwatch() {
   }
 }
 
-
-
 function resetStopwatch() {
   clearInterval(stopwatchInterval);
-  document.getElementById("stopwatch").innerHTML = "20:00";
-  remainingTimeWhenStopped = 1200000;
+  document.getElementById("stopwatch").innerHTML = "0:00";
+  remainingTimeWhenStopped = 0;
 }
 
 

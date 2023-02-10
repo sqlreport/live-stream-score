@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Match</title>
+    <script>
+      function addMatchInfo() {
+
+        let gameID = document.getElementById("game-id"").value;
+        let homeTeam = document.getElementById("home-team"").value;
+        let guestTeam = document.getElementById("guest-team"").value;
+                                             
+        localStorage.setItem("gameID", gameID);
+        localStorage.setItem("homeTeam", homeTeam);
+        localStorage.setItem("guestTeam", guestTeam);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Match</h1>
+    
+    <br><br>
+    GAME-ID: <input type="text" id="game-id">
+    <br>
+    HOME: <input type="text" id="home-team">
+    GUEST: <input type="text" id="guest-team">
+    <button onclick="addMatchInfo()">Reset</button>
+
+    
+  </body>
+</html>

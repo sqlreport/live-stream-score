@@ -3,82 +3,66 @@
   <head>
     <title>Stopwatch</title>
     <script>
-    	let stopwatchInterval;
-    	let remainingTimeWhenStopped;
-      let startTimeInput;
+      let stopwatchInterval;
       let endTime;
+      let remainingTimeWhenStopped;
 
-function startStopwatch() {
-  if (stopwatchInterval) {
-    clearInterval(stopwatchInterval);
-  }
-  let endTime = Date.now() + (remainingTimeWhenStopped || 0);
-  
-  stopwatchInterval = setInterval(function() {
-    let remainingTime = endTime - Date.now();
-    if (remainingTime <= 0) {
-      clearInterval(stopwatchInterval);
-      document.getElementById("stopwatch").innerHTML = "Time's up!";
-      return;
-    }
-    let minutes = Math.floor(remainingTime / 60000);
-    let seconds = Math.floor((remainingTime % 60000) / 1000);
-    let milliseconds = Math.floor(remainingTime % 1000 / 100);
-    if (minutes === 0) {
-      document.getElementById("stopwatch").innerHTML =
-        seconds + "." + milliseconds;
-    } else {
-      document.getElementById("stopwatch").innerHTML =
-        minutes + ":" + seconds.toString().padStart(2, "0");
-    }
-  }, 10);
-}
+      function startStopwatch() {
+        clearInterval(stopwatchInterval);
+        let userInput = document.getElementById("start-time-input").value;
+        endTime = Date.now();
+        if (userInput) {
+          let inputArray = userInput.split(":");
+          let minutes = parseInt(inputArray[0]) || 0;
+          let seconds = parseInt(inputArray[1]) || 0;
+          endTime = endTime + (minutes * 60000 + seconds * 1000);
+        } else {
+          endTime = endTime + (remainingTimeWhenStopped || 0);
+        }
+        stopwatchInterval = setInterval(function() {
+          let remainingTime = endTime - Date.now();
+          if (remainingTime <= 0) {
+            clearInterval(stopwatchInterval);
+            document.getElementById("stopwatch").innerHTML = "Time's up!";
+            return;
+          }
+          let minutes = Math.floor(remainingTime / 60000);
+          let seconds = Math.floor((remainingTime % 60000) / 1000);
+          let milliseconds = Math.floor(remainingTime % 1000 / 100);
+          if (minutes === 0) {
+            document.getElementById("stopwatch").innerHTML =
+              seconds + "." + milliseconds;
+          } else {
+            document.getElementById("stopwatch").innerHTML =
+              minutes + ":" + seconds.toString().padStart(2, "0");
+          }
+        }, 10);
+      }
 
-function stopStopwatch() {
-  if (stopwatchInterval) {
-    clearInterval(stopwatchInterval);
-    remainingTimeWhenStopped = endTime - Date.now();
-  }
-}
+      function stopStopwatch() {
+        if (stopwatchInterval) {
+          clearInterval(stopwatchInterval);
+          remainingTimeWhenStopped = endTime - Date.now();
+        }
+      }
 
-function resetStopwatch() {
-  clearInterval(stopwatchInterval);
-  
-  startTimeInput = document.getElementById("start-time-input").value;
-  
-  if (startTimeInput) {
-    
-    let inputArray = startTimeInput.split(":");
-    let minutes = parseInt(inputArray[0]) || 0;
-    alert(minutes)
-    let seconds = parseInt(inputArray[1]) || 0;
-    endTime = endTime + (minutes * 60000 + seconds * 1000);
-  }
-  
-  if (minutes === 0) {
-      document.getElementById("stopwatch").innerHTML =
-        seconds + "." + milliseconds;
-    } else {
-      document.getElementById("stopwatch").innerHTML =
-        minutes + ":" + seconds.toString().padStart(2, "0");
-      
-      remainingTimeWhenStopped = endTime;
-    }
-  
-}
-
-
+      function resetStopwatch() {
+        clearInterval(stopwatchInterval);
+        document.getElementById("stopwatch").innerHTML = "20:00";
+        remainingTimeWhenStopped = 1200000;
+      }
     </script>
   </head>
   <body>
     <h1>Stopwatch</h1>
     <div id="stopwatch">0:00:00</div>
     <br>
-    <button onclick="let intervalId = startStopwatch()">Start</button>
+    <button onclick="startStopwatch()">Start</button>
     <button onclick="stopStopwatch()">Stop</button>
     <button onclick="resetStopwatch()">Reset</button>
 
     <br><br>
-  Start Time (in seconds): <input type="text" id="start-time-input">
+    Start Time (in seconds): <input type="text" id="start-time-input">
   </body>
 </html>
+

@@ -31,8 +31,8 @@ input[type="radio"] {
     }
 
     async function submitData() {
-      const gameID = localStorage.getItem("gameID")
-      const remainingTimeWhenStopped = localStorage.getItem("remainingTimeWhenStopped")
+      let gameID = localStorage.getItem("gameID")
+      let remainingTimeWhenStopped = localStorage.getItem("remainingTimeWhenStopped")
 
       const data = {
         gameID,

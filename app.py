@@ -22,7 +22,7 @@ def match():
 def remaining_time(game_id):
     if request.method == 'POST':
         remaining_time = request.form.get('remaining_time')
-        redis_db.set(game_id, remaining_time)
+        redis_db.set(str(game_id), str(remaining_time))
         return 'Remaining time for game ID {} set to {}'.format(game_id, remaining_time)
     else:
         remaining_time = redis_db.get(game_id)

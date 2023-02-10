@@ -2,15 +2,47 @@
 <html>
   <head>
     <title>Score</title>
-    
+    <style>
+      #scoreboard {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .team-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .score {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .period {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .time {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    </style>
 
   </head>
   <body onload="displayRemainingTime()">
-    <h1>Score</h1>
-    <div id="home-team">Home</div>
-    <div id="guest-team">Guest</div>
-    <div id="stopwatch">0:00:00</div>
-    <div>Period: <div id="period">1</div></div>
+    <div class="scoreboard">
+    <div id="home-team" class="team-name">Home</div>
+    <div id="home-score" class="score">0</div>
+    <div  class="period" id="period">Period 1</div>
+    <div id="stopwatch" class="time">0:00:00</div>
+    <br><br>
+    <div id="guest-team" class="team-name">Guest</div>
+    <div id="home-score" class="score">0</div>
+    
+    </div>
     <script>
   function displayRemainingTime() {
     let remainingTime = localStorage.getItem("remainingTimeWhenStopped");

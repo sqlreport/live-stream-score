@@ -43,8 +43,7 @@ function stopStopwatch() {
 
 function resetStopwatch() {
   clearInterval(stopwatchInterval);
-  document.getElementById("stopwatch").innerHTML = "0:00";
-  remainingTimeWhenStopped = 0;
+  
   startTimeInput = document.getElementById("start-time-input").value;
   
   if (startTimeInput) {
@@ -60,6 +59,8 @@ function resetStopwatch() {
     } else {
       document.getElementById("stopwatch").innerHTML =
         minutes + ":" + seconds.toString().padStart(2, "0");
+      
+      remainingTimeWhenStopped = endTime;
     }
   
 }

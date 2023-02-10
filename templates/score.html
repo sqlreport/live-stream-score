@@ -4,47 +4,47 @@
     <title>Score</title>
     <style>
       .scoreboard {
-      width: 50%;
-      height: 300px;
-      background-color: #444;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 10px;
-      box-shadow: 2px 2px 5px #333;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        max-height: 100px;
+        overflow: auto;
+      }
+      .teams {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        font-size: 36px;
+      }
+      .team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .score {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .period {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .time {
+        font-size: 16px;
+        font-weight: bold;
+      }
       
-      .team-info {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .team-name {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .team-score {
-      font-size: 36px;
-      font-weight: bold;
-    }
-
-    .time-period {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-      
-    .team {
-        text-align: center;
+      .time-period {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        font-size: 20px;
+        margin-top: 20px;
       }
     </style>
 
@@ -52,17 +52,17 @@
   <body onload="displayRemainingTime()">
      <div class="scoreboard">
       <div class="teams">
-        <div class="team-info">
-          <div id="home-team" class="team-name">Home</div>
-          <div id="home-score" class="team-score">0</div>
+        <div class="team">
+          <div id="home-team" class="team">Home</div>
+          <div id="home-score" class="score">0</div>
         </div>
         <div class="time-period">
           <div class="time" id="stopwatch">0:00</div>
           <div class="period" id="period">Period 1</div>
         </div>
-        <div class="team-info">
+        <div class="team">
           <div id="guest-team" class="team-name">Guest</div>
-          <div id="guest-score" class="team-score">0</div>
+          <div id="guest-score" class="score">0</div>
         </div>
       </div>
     </div>
@@ -100,4 +100,3 @@
 </script>
   </body>
 </html>
-

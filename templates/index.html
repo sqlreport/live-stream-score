@@ -18,6 +18,7 @@
           endTime = endTime + (minutes * 60000 + seconds * 1000);
         } else {
           endTime = endTime + (remainingTimeWhenStopped || 0);
+
         }
         stopwatchInterval = setInterval(function() {
           let remainingTime = endTime - Date.now();
@@ -40,11 +41,13 @@
       }
 
       function stopStopwatch() {
-        if (stopwatchInterval) {
-          clearInterval(stopwatchInterval);
-          remainingTimeWhenStopped = endTime - Date.now();
-        }
-      }
+  if (stopwatchInterval) {
+    clearInterval(stopwatchInterval);
+    remainingTimeWhenStopped = endTime - Date.now();
+    document.getElementById("stopwatch").innerHTML = "";
+  }
+}
+
 
       function resetStopwatch() {
         clearInterval(stopwatchInterval);

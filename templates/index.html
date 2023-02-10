@@ -44,9 +44,9 @@
   if (stopwatchInterval) {
     clearInterval(stopwatchInterval);
     remainingTimeWhenStopped = endTime - Date.now();
-    let minutes = Math.floor(remainingTime / 60000);
-          let seconds = Math.floor((remainingTime % 60000) / 1000);
-          let milliseconds = Math.floor(remainingTime % 1000 / 100);
+    let minutes = Math.floor(remainingTimeWhenStopped / 60000);
+          let seconds = Math.floor((remainingTimeWhenStopped % 60000) / 1000);
+          let milliseconds = Math.floor(remainingTimeWhenStopped % 1000 / 100);
           if (minutes === 0) {
             document.getElementById("start-time-input").innerHTML =
               seconds + "." + milliseconds;

@@ -39,7 +39,7 @@ input[type="radio"] {
         remainingTimeWhenStopped
       };
       
-      const result = await postData(`/game/${gameID}/time`, data);
+      const result = await postData(`/match/${gameID}/time`, data);
       console.log(result);
     }
     </script>

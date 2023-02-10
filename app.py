@@ -12,7 +12,7 @@ def score():
     return render_template('score.html')
 
 @app.route('/match')
-def score():
+def match():
     return render_template('match.html')
 
 if __name__ == "__main__":

@@ -31,8 +31,8 @@ input[type="radio"] {
     }
 
     async function submitData() {
-      const gameID = document.getElementById("game-id").value;
-      const remainingTimeWhenStopped = document.getElementById("remaining-time").value;
+      const gameID = localStorage.getItem("gameID")
+      const remainingTimeWhenStopped = localStorage.getItem("remainingTimeWhenStopped")
 
       const data = {
         gameID,
@@ -79,6 +79,7 @@ input[type="radio"] {
               minutes + ":" + seconds.toString().padStart(2, "0");
           }
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
+          submitData()
         }, 10);
       }
 

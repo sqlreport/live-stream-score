@@ -5,12 +5,12 @@
     <script>
       function addMatchInfo() {
 
-        let gameID = document.getElementById("game-id"").value;
-        let homeTeam = document.getElementById("home-team"").value;
-        let guestTeam = document.getElementById("guest-team"").value;
+        let gameID = document.getElementById("game-id").value;
+        let homeTeam = document.getElementById("home-team").value;
+        let guestTeam = document.getElementById("guest-team").value;
                                              
         localStorage.setItem("gameID", gameID);
-        localStorage.setItem("homeTeam", "test team");
+        localStorage.setItem("homeTeam", homeTeam);
         localStorage.setItem("guestTeam", guestTeam);
       }
     </script>

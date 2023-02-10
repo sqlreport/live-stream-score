@@ -44,7 +44,16 @@
   if (stopwatchInterval) {
     clearInterval(stopwatchInterval);
     remainingTimeWhenStopped = endTime - Date.now();
-    document.getElementById("stopwatch").innerHTML = "";
+    let minutes = Math.floor(remainingTime / 60000);
+          let seconds = Math.floor((remainingTime % 60000) / 1000);
+          let milliseconds = Math.floor(remainingTime % 1000 / 100);
+          if (minutes === 0) {
+            document.getElementById("start-time-input").innerHTML =
+              seconds + "." + milliseconds;
+          } else {
+            document.getElementById("start-time-input").innerHTML =
+              minutes + ":" + seconds.toString().padStart(2, "0");
+          }
   }
 }
 

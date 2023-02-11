@@ -25,24 +25,42 @@ def remaining_time(game_id):
         if request.is_json:
             data = request.get_json()
             remaining_time = data.get('remainingTimeWhenStopped')
+            status = data.get('status')
+            period = data.get('period')
             # you can use the game_id and remaining_time values as needed
             # store the data in a database, update an existing record, etc.
             redis_db.set(game_id, remaining_time)
+            redis_db.set(game_id, status)
+            redis_db.set(game_id, period)
+            
             print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))
-            return jsonify({'remaining_time': remaining_time})
+            print('Status for game ID {} is {}'.format(game_id, status))
+            print('Period for game ID {} is {}'.format(game_id, period))
+                  
+            return jsonify({'remaining_time': remaining_time, 'period': period, 'status': status})
         else:
             print('No remaining time found for game ID {}'.format(game_id))
-            return jsonify({'remaining_time': 0})
+            print('Status for game ID {} is {}'.format(game_id, status))
+            print('Period for game ID {} is {}'.format(game_id, period))
+            return jsonify({'remaining_time': 0, 'period': period, 'status': status}})
     
         
     else:
         remaining_time = redis_db.get(game_id)
+        status = redis_db.get(status)
+        period = redis_db.get(period)
+        
         if remaining_time:
             print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))
-            return jsonify({'remaining_time': remaining_time})
+            print('Status for game ID {} is {}'.format(game_id, status))
+            print('Period for game ID {} is {}'.format(game_id, period))
+            
+            return jsonify({'remaining_time': remaining_time, 'period': period, 'status': status})
         else:
             print('No remaining time found for game ID {}'.format(game_id))
-            return jsonify({'remaining_time': 0})
+            print('Status for game ID {} is {}'.format(game_id, status))
+            print('Period for game ID {} is {}'.format(game_id, period))
+            return jsonify({'remaining_time': 0, 'period': period, 'status': status}})
     
 
 if __name__ == "__main__":

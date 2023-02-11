@@ -77,17 +77,15 @@
         console.log(data.remaining_time);
         return data.remaining_time;
 }
-      const urlParams = new URLSearchParams(window.location.search);
-      const game_id = urlParams.get('game_id');
+      const gameID = window.game_id;
+      console.log(gameID);
       
     </script>
     <script>
   function displayRemainingTime() {
-    let urlParams = new URLSearchParams(window.location.search);
-    let game_id = urlParams.get('game_id');
-    console.log(game_id);
     
-    //let remainingTime = getRemainingTime(game_id);
+    
+    let remainingTime = getRemainingTime(game_id);
     
     localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");

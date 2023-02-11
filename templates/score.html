@@ -92,12 +92,12 @@
     let game_id = "{{ game_id }}";
     
     let data = await getRemainingTime(game_id);
-    console.log(data)
+    console.log(data);
     
     let remainingTime = data.remaining_time;
     let period = data.period;
     let status = data.status;
-    console.log(status)
+    console.log(status);
     
     //localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");

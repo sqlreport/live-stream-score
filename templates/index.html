@@ -80,8 +80,9 @@ input[type="radio"] {
               minutes + ":" + seconds.toString().padStart(2, "0");
           }
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
-          submitData()
+          
         }, 100);
+        submitData();
       }
 
       function stopStopwatch() {

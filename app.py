@@ -24,6 +24,8 @@ def remaining_time(game_id):
         
         if request.is_json:
             data = request.get_json()
+            print('data retrieved: {}'.format(data))
+                  
             remaining_time = data.get('remainingTimeWhenStopped')
             status = data.get('status')
             period = data.get('period')

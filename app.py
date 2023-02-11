@@ -10,9 +10,9 @@ redis_db = redis.from_url(redis_url, decode_responses=True)
 def index():
     return render_template('index.html')
 
-@app.route('/score')
-def score():
-    return render_template('score.html')
+@app.route('/score/<string:game_id>')
+def score(game_id):
+    return render_template('score.html', game_id=game_id)
 
 @app.route('/match')
 def match():

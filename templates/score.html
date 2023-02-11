@@ -109,7 +109,7 @@
     document.getElementById("period").innerHTML = period;
     
     if (remainingTime && status==="start") {
-      console.log("remainingTime: " + remainingTime)
+      console.log("remainingTime: " + remainingTime);
       stopwatchInterval = setInterval(function() {
           let remainingTime = endTime - Date.now();
           if (remainingTime <= 0) {

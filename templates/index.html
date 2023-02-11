@@ -90,7 +90,7 @@ input[type="radio"] {
     clearInterval(stopwatchInterval);
     remainingTimeWhenStopped = endTime - Date.now();
     document.getElementById("start-time-input").value = "";
-
+    submitData();
   }
 }
 

@@ -90,6 +90,8 @@ input[type="radio"] {
       }
 
       function stopStopwatch() {
+        let period = document.querySelector('input[name="period"]:checked').value;
+        
   if (stopwatchInterval) {
     clearInterval(stopwatchInterval);
     remainingTimeWhenStopped = endTime - Date.now();

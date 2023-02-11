@@ -42,7 +42,7 @@ def remaining_time(game_id):
             print('No remaining time found for game ID {}'.format(game_id))
             print('Status for game ID {} is {}'.format(game_id, status))
             print('Period for game ID {} is {}'.format(game_id, period))
-            return jsonify({'remaining_time': 0, 'period': period, 'status': status}})
+            return jsonify({'remaining_time': 0, 'period': period, 'status': status})
     
         
     else:
@@ -60,7 +60,7 @@ def remaining_time(game_id):
             print('No remaining time found for game ID {}'.format(game_id))
             print('Status for game ID {} is {}'.format(game_id, status))
             print('Period for game ID {} is {}'.format(game_id, period))
-            return jsonify({'remaining_time': 0, 'period': period, 'status': status}})
+            return jsonify({'remaining_time': 0, 'period': period, 'status': status})
     
 
 if __name__ == "__main__":

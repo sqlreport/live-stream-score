@@ -91,6 +91,8 @@
     
     let game_id = "{{ game_id }}";
     let data = getRemainingTime(game_id);
+    
+    let data = await getRemainingTime(game_id);
     console.log(data)
     
     let remainingTime = data.remaining_time;

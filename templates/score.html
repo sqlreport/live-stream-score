@@ -72,9 +72,9 @@
     <script>
       async function getRemainingTime() {
         const urlParams = new URLSearchParams(window.location.search);
-        const gameID = urlParams.get('gameID');
+        const gameID = urlParams.get('game_id');
         //const gameID = localStorage.getItem("gameID");
-        const response = await fetch(`/game/${gameID}/time`);
+        const response = await fetch(`/match/${gameID}/time`);
         const data = await response.json();
         console.log(data.remaining_time);
         return data.remaining_time;

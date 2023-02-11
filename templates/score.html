@@ -90,31 +90,45 @@
   function displayRemainingTime() {
     
     let game_id = "{{ game_id }}";
-    let remainingTime = getRemainingTime(game_id);
-    console.log(remainingTime)
+    let data = getRemainingTime(game_id);
+    console.log(data)
+    
+    let remainingTime = data.remaining_time;
+    let period = data.period;
+    let status = data.status;
+    console.log(status)
     
     //localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");
-    let period = localStorage.getItem("period");
+    //let period = localStorage.getItem("period");
     
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;
     document.getElementById("period").innerHTML = period;
     
-    if (remainingTime) {
+    if (remainingTime && status==="start") {
       console.log("remainingTime: " + remainingTime)
-      let minutes = Math.floor(remainingTime / 60000);
-      let seconds = Math.floor((remainingTime % 60000) / 1000);
-      let milliseconds = Math.floor(remainingTime % 1000 / 100);
-      if (minutes === 0) {
-        document.getElementById("stopwatch").innerHTML =
-          seconds + "." + milliseconds;
-      } else {
-        document.getElementById("stopwatch").innerHTML =
-          minutes + ":" + seconds.toString().padStart(2, "0");
-        
-      }
+      stopwatchInterval = setInterval(function() {
+          let remainingTime = endTime - Date.now();
+          if (remainingTime <= 0) {
+            clearInterval(stopwatchInterval);
+            document.getElementById("stopwatch").innerHTML = "Time's up!";
+            return;
+          }
+          let minutes = Math.floor(remainingTime / 60000);
+          let seconds = Math.floor((remainingTime % 60000) / 1000);
+          let milliseconds = Math.floor(remainingTime % 1000 / 100);
+          if (minutes === 0) {
+            document.getElementById("stopwatch").innerHTML =
+              seconds + "." + milliseconds;
+          } else {
+            document.getElementById("stopwatch").innerHTML =
+              minutes + ":" + seconds.toString().padStart(2, "0");
+          }
+          localStorage.setItem("remainingTimeWhenStopped", remainingTime);
+          
+        }, 100);
     } else {
       document.getElementById("stopwatch").innerHTML = "No remaining time found."
     }
@@ -122,7 +136,7 @@
     
   }
 
-   setInterval(displayRemainingTime, 100);
+   setInterval(displayRemainingTime, 1000);
 </script>
   </body>
 </html>

@@ -77,18 +77,14 @@
         console.log(data.remaining_time);
         return data.remaining_time;
 }
-      const getGameID = () => {
-  const search = window.location.search;
-  const params = new URLSearchParams(search);
-  return params.get("game_id");
-};
-
-const gameID = getGameID();
+      const urlParams = new URLSearchParams(window.location.search);
+      const game_id = urlParams.get('game_id');
       
     </script>
     <script>
   function displayRemainingTime() {
-    let game_id = getGameID();
+    let urlParams = new URLSearchParams(window.location.search);
+    let game_id = urlParams.get('game_id');
     console.log(game_id);
     
     //let remainingTime = getRemainingTime(game_id);

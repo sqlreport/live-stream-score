@@ -76,12 +76,12 @@
         const data = await response.json();
         console.log(data.remaining_time);
         return {
-      game_id: game_id,
-      status: data.status,
-      period: data.period,
-      remaining_time: data.remaining_time
-    }
-}
+          game_id: game_id,
+          status: data.status,
+          period: data.period,
+          remaining_time: data.remaining_time
+        }
+      };
       const game_id = "{{ game_id }}";
       console.log(game_id);
       

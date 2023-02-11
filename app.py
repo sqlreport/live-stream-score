@@ -24,16 +24,13 @@ def remaining_time(game_id):
         
         if request.is_json:
             data = request.get_json()
-            print('data retrieved: {}'.format(data))
                   
             remaining_time = data.get('remainingTimeWhenStopped')
             status = data.get('status')
             period = data.get('period')
             # you can use the game_id and remaining_time values as needed
             # store the data in a database, update an existing record, etc.
-            redis_db.set(game_id, remaining_time)
-            redis_db.set(game_id, status)
-            redis_db.set(game_id, period)
+            redis_db.set(game_id, data)
             
             print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))
             print('Status for game ID {} is {}'.format(game_id, status))
@@ -48,9 +45,11 @@ def remaining_time(game_id):
     
         
     else:
-        remaining_time = redis_db.get(game_id)
-        status = redis_db.get('status')
-        period = redis_db.get('period')
+        data = redis_db.get(game_id)
+        
+        remaining_time = data.get('remainingTimeWhenStopped')
+        status = data.get('status')
+        period = data.get('period')
         
         if remaining_time:
             print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))

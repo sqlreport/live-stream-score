@@ -77,21 +77,18 @@
         console.log(data.remaining_time);
         return data.remaining_time;
 }
-      const game_id = getURLParameter('game_id');
-getRemainingTime(game_id).then(function(remaining_time) {
-  console.log(remaining_time);
-});
-
-function getURLParameter(name) {
-  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-  var results = regex.exec(location.search);
-  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      const getGameID = () => {
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  return params.get("game_id");
 };
+
+const gameID = getGameID();
+      
     </script>
     <script>
   function displayRemainingTime() {
-    const game_id = getURLParameter('game_id');
+    let game_id = getGameID;
     let remainingTime = getRemainingTime(game_id);//localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");

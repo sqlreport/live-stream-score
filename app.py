@@ -28,7 +28,7 @@ def remaining_time(game_id):
             # you can use the game_id and remaining_time values as needed
             # store the data in a database, update an existing record, etc.
             redis_db.set(game_id, remaining_time)
-            print('Remaining time for game ID {} is {}'.format(game_id, remaining_time.decode('utf-8')))
+            print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))
             return jsonify({'remaining_time': remaining_time})
         else:
             print('No remaining time found for game ID {}'.format(game_id))
@@ -38,7 +38,7 @@ def remaining_time(game_id):
     else:
         remaining_time = redis_db.get(game_id)
         if remaining_time:
-            print('Remaining time for game ID {} is {}'.format(game_id, remaining_time.decode('utf-8')))
+            print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))
             return jsonify({'remaining_time': remaining_time})
         else:
             print('No remaining time found for game ID {}'.format(game_id))

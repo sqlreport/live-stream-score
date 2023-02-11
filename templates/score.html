@@ -70,19 +70,29 @@
       </div>
     </div>
     <script>
-      async function getRemainingTime() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const gameID = urlParams.get('game_id');
-        //const gameID = localStorage.getItem("gameID");
-        const response = await fetch(`/match/${gameID}/time`);
+      async function getRemainingTime(game_id) {
+        
+        const response = await fetch(`/match/${game_id}/time`);
         const data = await response.json();
         console.log(data.remaining_time);
         return data.remaining_time;
 }
+      const game_id = getURLParameter('game_id');
+getRemainingTime(game_id).then(function(remaining_time) {
+  console.log(remaining_time);
+});
+
+function getURLParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
     </script>
     <script>
   function displayRemainingTime() {
-    let remainingTime = getRemainingTime();//localStorage.getItem("remainingTimeWhenStopped");
+    const game_id = getURLParameter('game_id');
+    let remainingTime = getRemainingTime(game_id);//localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");
     let period = localStorage.getItem("period");

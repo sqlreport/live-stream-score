@@ -89,7 +89,11 @@ const gameID = getGameID();
     <script>
   function displayRemainingTime() {
     let game_id = getGameID();
-    let remainingTime = getRemainingTime(game_id);//localStorage.getItem("remainingTimeWhenStopped");
+    console.log(game_id);
+    
+    //let remainingTime = getRemainingTime(game_id);
+    
+    localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");
     let period = localStorage.getItem("period");

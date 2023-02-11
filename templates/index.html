@@ -30,13 +30,15 @@ input[type="radio"] {
       return response.json();
     }
 
-    async function submitData() {
+    async function submitData(period,status) {
       let gameID = localStorage.getItem("gameID")
       let remainingTimeWhenStopped = localStorage.getItem("remainingTimeWhenStopped")
-
+      
       const data = {
         gameID,
-        remainingTimeWhenStopped
+        remainingTimeWhenStopped,
+        period,
+        status
       };
       console.log(data);
       
@@ -52,6 +54,8 @@ input[type="radio"] {
       function startStopwatch() {
         clearInterval(stopwatchInterval);
         let userInput = document.getElementById("start-time-input").value;
+        let period = document.querySelector('input[name="period"]:checked').value;
+        
         endTime = Date.now();
         if (userInput) {
           let inputArray = userInput.split(":");
@@ -82,7 +86,7 @@ input[type="radio"] {
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
         }, 100);
-        submitData();
+        submitData(period, "start");
       }
 
       function stopStopwatch() {
@@ -90,7 +94,7 @@ input[type="radio"] {
     clearInterval(stopwatchInterval);
     remainingTimeWhenStopped = endTime - Date.now();
     document.getElementById("start-time-input").value = "";
-    submitData();
+    submitData(period,"stop");
   }
 }
 
@@ -112,7 +116,7 @@ input[type="radio"] {
         remainingTimeWhenStopped = 1200000;
         localStorage.setItem("remainingTimeWhenStopped", remainingTimeWhenStopped);
         localStorage.setItem("period", period);
-        submitData();
+        submitData(period, "reset");
       }
     </script>
   </head>

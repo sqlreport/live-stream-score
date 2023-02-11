@@ -47,8 +47,8 @@ def remaining_time(game_id):
         
     else:
         remaining_time = redis_db.get(game_id)
-        status = redis_db.get(status)
-        period = redis_db.get(period)
+        status = redis_db.get('status')
+        period = redis_db.get('period')
         
         if remaining_time:
             print('Remaining time for game ID {} is {}'.format(game_id, remaining_time))

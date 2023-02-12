@@ -78,7 +78,6 @@
     document.getElementById("guest-team").innerHTML = guestTeam;
     document.getElementById("period").innerHTML = period;
     
-    if (remainingTime && status==="start") {
       stopwatchInterval = setInterval(function() {
           let data = getRemainingTime(game_id);
     
@@ -105,9 +104,6 @@
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
         }, 100);
-    } else {
-      document.getElementById("stopwatch").innerHTML = "No remaining time found."
-    }
   }
 </script>
   </head>

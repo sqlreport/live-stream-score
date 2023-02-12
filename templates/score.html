@@ -49,6 +49,10 @@
       }
     </style>
 <script>
+  let stopwatchInterval;
+  let endTime;
+  let remainingTimeWhenStopped;
+  
   async function getRemainingTime(game_id) {
         
         const response = await fetch(`/match/${game_id}/time`);
@@ -71,20 +75,25 @@
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;
     
+    endTime = Date.now();
+    
       stopwatchInterval = setInterval(function() {
           let data = getRemainingTime(game_id);
     
-          let remainingTime = data.remaining_time;
+          let remaining_time = data.remaining_time;
           let period = data.period;
           let status = data.status;
         
+          remainingTimeWhenStopped = remaining_time
           document.getElementById("period").innerHTML = period;
+        
           let remainingTime = endTime - Date.now();
           if (remainingTime <= 0) {
             clearInterval(stopwatchInterval);
             document.getElementById("stopwatch").innerHTML = "Time's up!";
             return;
           }
+        
           let minutes = Math.floor(remainingTime / 60000);
           let seconds = Math.floor((remainingTime % 60000) / 1000);
           let milliseconds = Math.floor(remainingTime % 1000 / 100);

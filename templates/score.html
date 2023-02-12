@@ -52,6 +52,9 @@
   let stopwatchInterval;
   let endTime;
   let remainingTimeWhenStopped;
+  let remaining_time
+  let period
+  let status
   
   async function getRemainingTime(game_id) {
         
@@ -61,7 +64,11 @@
         result = { game_id: game_id, status: data.status, period: data.period, remaining_time: data.remaining_time };
         console.log("result:");
         console.log(result);
-        return result
+    
+        remaining_time = data.remaining_time;
+        period = data.period;
+        status = data.status;
+        
       }
   
   function displayRemainingTime() {
@@ -78,13 +85,8 @@
     
     endTime = Date.now();
     parentInterval = setInterval(function() {
-      let data = getRemainingTime(game_id);
-      console.log("data:");
-      console.log(data);
-      
-      let remaining_time = data.remaining_time;
-      let period = data.period;
-      let status = data.status;
+      getRemainingTime(game_id);
+          
       endTime = remaining_time
       console.log("endTime:");
       console.log(endTime);

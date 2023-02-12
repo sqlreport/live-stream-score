@@ -83,7 +83,6 @@
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;
     
-    endTime = Date.now();
     parentInterval = setInterval(function() {
       getRemainingTime(game_id);
           
@@ -94,6 +93,7 @@
       document.getElementById("period").innerHTML = period;
       
       if (status==="start") {
+        
         stopwatchInterval = setInterval(function() {
           let remainingTime = endTime - Date.now();
           console.log("remainingTime:");

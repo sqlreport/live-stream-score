@@ -86,7 +86,7 @@
     parentInterval = setInterval(function() {
       getRemainingTime(game_id);
       
-      let remainingTimeWhenStopped = localStorage.getItem("remainingTimeWhenStopped")
+      let remainingTimeWhenStopped = parseInt(localStorage.getItem("remainingTimeWhenStopped"));
           
       endTime = Date.now() + (remainingTimeWhenStopped || 0);
       

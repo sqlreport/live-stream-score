@@ -105,6 +105,10 @@
             refresh_interval = 1000;
           }
           
+          if (remaining_time <= 1000) {
+            document.getElementById("stopwatch").innerHTML = "> 00:00 <"
+          }
+          
         }, refresh_interval);
  
   }

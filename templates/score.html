@@ -56,14 +56,14 @@
     
     //let data = await getRemainingTime(game_id);
     
-    let remainingTime = data.remaining_time;
-    let period = data.period;
-    let status = data.status;
+    //let remainingTime = data.remaining_time;
+    //let period = data.period;
+    //let status = data.status;
     
-    //localStorage.getItem("remainingTimeWhenStopped");
+    let remainingTimelocalStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
     let guestTeam = localStorage.getItem("guestTeam");
-    //let period = localStorage.getItem("period");
+    let period = localStorage.getItem("period");
     
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;

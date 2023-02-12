@@ -49,7 +49,16 @@
       }
     </style>
 <script>
+  async function getRemainingTime(game_id) {
+        
+        const response = await fetch(`/match/${game_id}/time`);
+        const data = await response.json();
+        console.log(data.remaining_time);
 
+        result = { game_id: game_id, status: data.status, period: data.period, remaining_time: data.remaining_time };
+        return result
+      }
+  
   function displayRemainingTime() {
     
     let game_id = "{{ game_id }}";

@@ -70,7 +70,6 @@
     
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;
-    document.getElementById("period").innerHTML = period;
     
       stopwatchInterval = setInterval(function() {
           let data = getRemainingTime(game_id);
@@ -79,6 +78,7 @@
           period = data.period;
           status = data.status;
         
+          document.getElementById("period").innerHTML = period;
           let remainingTime = endTime - Date.now();
           if (remainingTime <= 0) {
             clearInterval(stopwatchInterval);

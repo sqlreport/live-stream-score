@@ -60,7 +60,7 @@
 
         result = { game_id: game_id, status: data.status, period: data.period, remaining_time: data.remaining_time };
     
-        console.log(result);
+        console.log("result:" + result);
         return result
       }
   
@@ -79,7 +79,8 @@
     endTime = Date.now();
     parentInterval = setInterval(function() {
       let data = getRemainingTime(game_id);
-    
+      console.log("data:" + data);
+      
       let remaining_time = data.remaining_time;
       let period = data.period;
       let status = data.status;

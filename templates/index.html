@@ -53,6 +53,7 @@ input[type="radio"] {
       let remainingTimeWhenStopped;
 
       function startStopwatch() {
+        refresh_interval = 1000;
         clearInterval(stopwatchInterval);
         let userInput = document.getElementById("start-time-input").value;
         let period = document.querySelector('input[name="period"]:checked').value;
@@ -94,6 +95,7 @@ input[type="radio"] {
       }
 
       function stopStopwatch() {
+        refresh_interval = 1000;
         let period = document.querySelector('input[name="period"]:checked').value;
         
   if (stopwatchInterval) {
@@ -106,6 +108,7 @@ input[type="radio"] {
 
 
       function resetStopwatch() {
+        refresh_interval = 1000;
         clearInterval(stopwatchInterval);
         let userInput = document.getElementById("start-time-input").value;
         let period = document.querySelector('input[name="period"]:checked').value;

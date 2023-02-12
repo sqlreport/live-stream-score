@@ -90,7 +90,7 @@
           document.getElementById("period").innerHTML = period;
         
           let remainingTime = endTime - Date.now();
-          if (remainingTime <= 0) {
+          if (remaining_time <= 0) {
             clearInterval(stopwatchInterval);
             document.getElementById("stopwatch").innerHTML = "Time's up!";
             return;
@@ -108,7 +108,7 @@
           }
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
-        }, 100);
+        }, 1000);
   }
 </script>
   </head>

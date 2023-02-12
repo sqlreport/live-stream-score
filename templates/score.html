@@ -52,9 +52,10 @@
   let stopwatchInterval;
   let endTime;
   let remainingTimeWhenStopped;
-  let remaining_time
-  let period
-  let status
+  let remaining_time;
+  let period;
+  let status;
+  let refresh_interval;
   
   async function getRemainingTime(game_id) {
         
@@ -72,7 +73,7 @@
       }
   
   function displayRemainingTime() {
-    
+    refresh_interval = 1000;
     let game_id = "{{ game_id }}";
     
     //let remainingTime=localStorage.getItem("remainingTimeWhenStopped");
@@ -85,7 +86,7 @@
       
         stopwatchInterval = setInterval(function() { 
           getRemainingTime(game_id);
-      
+          
           document.getElementById("period").innerHTML = period;
           
           console.log(status);
@@ -93,15 +94,18 @@
           let minutes = Math.floor(remaining_time / 60000);
           let seconds = Math.floor((remaining_time % 60000) / 1000);
           let milliseconds = Math.floor(remaining_time % 1000 / 100);
+              
           if (minutes === 0) {
             document.getElementById("stopwatch").innerHTML =
               seconds + "." + milliseconds;
+            refresh_interval = 100;
           } else {
             document.getElementById("stopwatch").innerHTML =
               minutes + ":" + seconds.toString().padStart(2, "0");
+            refresh_interval = 1000;
           }
           
-        }, 1000);
+        }, refresh_interval);
  
   }
 </script>

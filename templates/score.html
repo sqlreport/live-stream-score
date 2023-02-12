@@ -116,9 +116,10 @@
         }, 1000);
       } else if (status==="stop" || status==="reset") {
           console.log(status);
-          console.log(remainingTime);
         
           remainingTime=remaining_time;
+          console.log(remainingTime);
+        
           let minutes = Math.floor(remainingTime / 60000);
           let seconds = Math.floor((remainingTime % 60000) / 1000);
           let milliseconds = Math.floor(remainingTime % 1000 / 100);

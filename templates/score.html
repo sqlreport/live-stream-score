@@ -101,6 +101,9 @@
             document.getElementById("stopwatch").innerHTML = "Time's up!";
             return;
           }
+        } else {
+          let remainingTime = remaining_time;                                
+        }
           let minutes = Math.floor(remainingTime / 60000);
           let seconds = Math.floor((remainingTime % 60000) / 1000);
           let milliseconds = Math.floor(remainingTime % 1000 / 100);
@@ -114,24 +117,6 @@
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
         }, 1000);
-      } else {
-          console.log(status);
-        
-          remainingTime=remaining_time;
-          console.log(remainingTime);
-        
-          let minutes = Math.floor(remainingTime / 60000);
-          let seconds = Math.floor((remainingTime % 60000) / 1000);
-          let milliseconds = Math.floor(remainingTime % 1000 / 100);
-          if (minutes === 0) {
-            document.getElementById("stopwatch").innerHTML =
-              seconds + "." + milliseconds;
-          } else {
-            document.getElementById("stopwatch").innerHTML =
-              minutes + ":" + seconds.toString().padStart(2, "0");
-          }
-          localStorage.setItem("remainingTimeWhenStopped", remainingTime);
-      } 
     }, 1000);
   }
 </script>

@@ -59,8 +59,8 @@
         const data = await response.json();
 
         result = { game_id: game_id, status: data.status, period: data.period, remaining_time: data.remaining_time };
-    
-        console.log("result:" + result);
+        console.log("result:");
+        console.log(result);
         return result
       }
   
@@ -79,19 +79,21 @@
     endTime = Date.now();
     parentInterval = setInterval(function() {
       let data = getRemainingTime(game_id);
-      console.log("data:" + data);
+      console.log("data:");
+      console.log(data);
       
       let remaining_time = data.remaining_time;
       let period = data.period;
       let status = data.status;
       endTime = remaining_time
-      
-      console.log("endTime:" + endTime);
+      console.log("endTime:");
+      console.log(endTime);
       
       if (status==="start") {
         stopwatchInterval = setInterval(function() {
           let remainingTime = endTime - Date.now();
-          console.log("remainingTime:" + remainingTime);
+          console.log("remainingTime:");
+          console.log(remainingTime);
           
           if (remainingTime <= 0) {
             clearInterval(stopwatchInterval);

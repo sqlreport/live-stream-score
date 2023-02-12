@@ -50,27 +50,15 @@
     </style>
 <script>
 
-      async function getRemainingTime(game_id) {
-        
-        const response = await fetch(`/match/${game_id}/time`);
-        const data = await response.json();
-        console.log(data.remaining_time);
-
-        result = { game_id: game_id, status: data.status, period: data.period, remaining_time: data.remaining_time };
-        return result
-      }
-
   function displayRemainingTime() {
     
     let game_id = "{{ game_id }}";
     
-    let data = await getRemainingTime(game_id);
-    console.log(data);
+    //let data = await getRemainingTime(game_id);
     
     let remainingTime = data.remaining_time;
     let period = data.period;
     let status = data.status;
-    console.log(status);
     
     //localStorage.getItem("remainingTimeWhenStopped");
     let homeTeam = localStorage.getItem("homeTeam");
@@ -82,7 +70,6 @@
     document.getElementById("period").innerHTML = period;
     
     if (remainingTime && status==="start") {
-      console.log("remainingTime: " + remainingTime);
       stopwatchInterval = setInterval(function() {
           let remainingTime = endTime - Date.now();
           if (remainingTime <= 0) {
@@ -106,11 +93,7 @@
     } else {
       document.getElementById("stopwatch").innerHTML = "No remaining time found."
     }
-    
-    
   }
-
-   
 </script>
   </head>
   <body onload="displayRemainingTime()">
@@ -131,7 +114,6 @@
           <div id="home-logo" class="team-logo"><img src="/static/ajoie.png"  width="40" height="40" ></div>
         </div>
       </div>
-    </div>
-    
+    </div> 
   </body>
 </html>

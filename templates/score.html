@@ -80,6 +80,12 @@
     
     if (remainingTime && status==="start") {
       stopwatchInterval = setInterval(function() {
+          let data = getRemainingTime(game_id);
+    
+          remainingTime = data.remaining_time;
+          period = data.period;
+          status = data.status;
+        
           let remainingTime = endTime - Date.now();
           if (remainingTime <= 0) {
             clearInterval(stopwatchInterval);

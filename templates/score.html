@@ -82,12 +82,12 @@
     
     document.getElementById("home-team").innerHTML = homeTeam;
     document.getElementById("guest-team").innerHTML = guestTeam;
-    
-      getRemainingTime(game_id);
-      
-      document.getElementById("period").innerHTML = period;
       
         stopwatchInterval = setInterval(function() { 
+          getRemainingTime(game_id);
+      
+          document.getElementById("period").innerHTML = period;
+          
           console.log(status);
           
           let minutes = Math.floor(remaining_time / 60000);

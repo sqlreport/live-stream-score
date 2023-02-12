@@ -117,6 +117,21 @@
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
         }, 1000);
+      } elif (status==="stop") {
+          console.log("stop");
+        
+          remainingTime=remaining_time;
+          let minutes = Math.floor(remainingTime / 60000);
+          let seconds = Math.floor((remainingTime % 60000) / 1000);
+          let milliseconds = Math.floor(remainingTime % 1000 / 100);
+          if (minutes === 0) {
+            document.getElementById("stopwatch").innerHTML =
+              seconds + "." + milliseconds;
+          } else {
+            document.getElementById("stopwatch").innerHTML =
+              minutes + ":" + seconds.toString().padStart(2, "0");
+          }
+          localStorage.setItem("remainingTimeWhenStopped", remainingTime);
       }
     }, 3000);
   }

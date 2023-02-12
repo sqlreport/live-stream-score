@@ -117,8 +117,8 @@
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
         }, 1000);
-      } else if (status==="stop") {
-          console.log("stop");
+      } else if (status==="stop" || status==="reset") {
+          console.log(status);
         
           remainingTime=remaining_time;
           let minutes = Math.floor(remainingTime / 60000);

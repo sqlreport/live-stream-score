@@ -74,9 +74,9 @@
       stopwatchInterval = setInterval(function() {
           let data = getRemainingTime(game_id);
     
-          remainingTime = data.remaining_time;
-          period = data.period;
-          status = data.status;
+          let remainingTime = data.remaining_time;
+          let period = data.period;
+          let status = data.status;
         
           document.getElementById("period").innerHTML = period;
           let remainingTime = endTime - Date.now();

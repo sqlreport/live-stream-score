@@ -42,7 +42,7 @@ input[type="radio"] {
       };
       console.log(data);
       
-      const result = await postData(`/match/${gameID}/time`, data);
+      const result = await postData(`/match${gameID}/time`, data);
       console.log(result);
     }
     </script>

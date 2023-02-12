@@ -114,7 +114,7 @@
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
           
         }, 1000);
-      } else if (status==="stop" || status==="reset") {
+      } else {
           console.log(status);
         
           remainingTime=remaining_time;
@@ -131,7 +131,7 @@
               minutes + ":" + seconds.toString().padStart(2, "0");
           }
           localStorage.setItem("remainingTimeWhenStopped", remainingTime);
-      }
+      } 
     }, 1000);
   }
 </script>

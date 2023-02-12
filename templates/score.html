@@ -91,6 +91,8 @@
       console.log("endTime:");
       console.log(endTime);
       
+      document.getElementById("period").innerHTML = period;
+      
       if (status==="start") {
         stopwatchInterval = setInterval(function() {
           let remainingTime = endTime - Date.now();

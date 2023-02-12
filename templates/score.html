@@ -85,27 +85,17 @@
     
     parentInterval = setInterval(function() {
       getRemainingTime(game_id);
+      
+      let remainingTimeWhenStopped = localStorage.getItem("remainingTimeWhenStopped")
           
-      endTime = Date.now() + remaining_time
-      console.log("remaining_time:");
-      console.log(remaining_time);
+      endTime = Date.now() + (remainingTimeWhenStopped || 0);
       
       document.getElementById("period").innerHTML = period;
       
       if (status==="start") {
         
-        stopwatchInterval = setInterval(function() {
-          console.log("endTime:");
-          console.log(endTime);
-          
-          console.log("Date.now():");
-          console.log(Date.now());
-          
+        stopwatchInterval = setInterval(function() { 
           let remainingTime = endTime - Date.now();
-
-          console.log("remainingTime:");
-          console.log(remainingTime);
-          
           if (remainingTime <= 0) {
             clearInterval(stopwatchInterval);
             document.getElementById("stopwatch").innerHTML = "Time's up!";
